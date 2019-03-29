@@ -37,12 +37,12 @@ namespace DNSPod4NETCore2.Cli
                 Token = item.Token
             };
             DnsPodClient client = new DnsPodClient(new HttpClient(), configuration);
-            DnsPodRecord record = new DnsPodRecord(client);
+            DnsPodApi record = new DnsPodApi(client);
 
             //如果用户没有输入RecordId，则通过List接口获取
-            if (item.RecordId == 0)
+            if (item.RecordId == null)
             {
-                item.RecordId = Convert.ToInt32(record.List(item.DomainName).records.FirstOrDefault(r => r.name == item.SubDomain)?.id);
+                item.RecordId = record.RecordList(item.DomainName).Records.FirstOrDefault(r => r.Name == item.SubDomain)?.Id;
             }
 
             if (record.Modify(item.DomainName, item.RecordId, item.Value, item.SubDomain, item.RecordType))

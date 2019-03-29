@@ -34,7 +34,7 @@ namespace DNSPod4NETCore2.Web
             services.Configure<DDnsConfiguration>(Configuration.GetSection("DDnsConfiguration"));
             services.AddSingleton(Configuration.GetSection("DnsPodConfiguration").Get<DnsPodConfiguration>());
             services.AddHttpClient<IDnsPodClient, DnsPodClient>();
-            services.AddSingleton<DnsPodRecord>();
+            services.AddSingleton<DnsPodApi>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

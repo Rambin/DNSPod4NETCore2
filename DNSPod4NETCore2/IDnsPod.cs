@@ -11,14 +11,14 @@ namespace DNSPod4NETCore2
         /// </summary>
         /// <param name="paramObject"></param>
         /// <returns></returns>
-        int Create(object paramObject);
+        string Create(object paramObject);
 
         /// <summary>
         /// 列表
         /// </summary>
         /// <param name="paramObject"></param>
         /// <returns></returns>
-        dynamic List(object paramObject);
+        dynamic RecordList(object paramObject);
 
         /// <summary>
         /// 移除

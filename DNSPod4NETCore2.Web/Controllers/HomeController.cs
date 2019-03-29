@@ -13,8 +13,8 @@ namespace DNSPod4NETCore2.Web.Controllers
     public class HomeController : Controller
     {
         private readonly DDnsConfiguration configuration;
-        private readonly DnsPodRecord record;
-        public HomeController(IOptions<DDnsConfiguration> config, DnsPodRecord dnsPodRecord)
+        private readonly DnsPodApi record;
+        public HomeController(IOptions<DDnsConfiguration> config, DnsPodApi dnsPodRecord)
         {
             configuration = config.Value;
             record = dnsPodRecord;
@@ -50,7 +50,7 @@ namespace DNSPod4NETCore2.Web.Controllers
         [HttpGet("[controller]/[action]/{ip}")]
         public IActionResult EditIP(string ip)
         {
-            var recordId = Convert.ToInt32(record.List(configuration.DomainName).records.FirstOrDefault(r => r.name == configuration.SubDomain)?.id);
+            var recordId = record.RecordList(configuration.DomainName).Records.FirstOrDefault(r => r.Name == configuration.SubDomain)?.Id;
             if (record.Modify(configuration.DomainName, recordId, ip, configuration.SubDomain))
                 return Content("修改完成！");
             else
