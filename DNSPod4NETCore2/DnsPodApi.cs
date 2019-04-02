@@ -36,7 +36,7 @@ namespace DNSPod4NETCore2
         /// <param name="recordType">记录类型，通过API记录类型获得，大写英文，比如：A</param>
         /// <param name="recordLine">记录线路，通过API记录线路获得，中文，比如：默认</param>
         /// <returns>记录ID</returns>
-        public string Create(int domainId, string subDomain, string recordValue, string recordType, string recordLine)
+        public string Create(int domainId, string subDomain, string recordValue, string recordType = "A", string recordLine = "默认")
         {
             string recordId = null;
             object p = new
@@ -54,13 +54,13 @@ namespace DNSPod4NETCore2
         /// <summary>
         /// 创建记录,默认记录类型为A
         /// </summary>
-        /// <param name="domainId">域名ID</param>
+        /// <param name="domainName">域名</param>
         /// <param name="subDomain">二级域名名称</param>
         /// <param name="recordValue">记录值</param>
         /// <param name="recordType">记录类型，通过API记录类型获得，大写英文，比如：A</param>
-        /// <param name="recordLineId">记录线路ID，通过API记录线路获得，中文，比如：默认</param>
+        /// <param name="recordLineId">记录线路ID，通过API记录线路获得，英文字符串，比如：‘10=1’</param>
         /// <returns>记录ID</returns>
-        public string Create(string domainName, string subDomain, string recordValue, string recordType = "A", string recordLineId = "默认")
+        public string Create(string domainName, string subDomain, string recordValue, string recordType = "A", string recordLineId = "0")
         {
             string recordId = null;
             object p = new
